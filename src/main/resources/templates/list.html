@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Lista</title>
+</head>
+<body>
+	<div th:switch="${lista}" >
+	 <h2 th:case="null">No Games</h2>
+     	<div th:case="*">
+		<table>
+    	<thead>
+        	<tr>
+            	<th> Nombre </th>
+            	<th> Precio </th>
+            	<th> Fecha </th>
+            	<th> Desarrollador </th>
+        	</tr>
+    	</thead>
+    	<tbody>
+        	<tr th:each="juego : ${lista}">
+           		<td th:text="${juego.getNombre_juego()}"></td>
+           		<td th:text="${juego.getPrecio_juego()}"></td>
+           		<td th:text="${juego.getFecha_juego()}"></td>
+           		<td th:text="${juego.getDesarrollador().getNombre_desarrollador()}"></td>
+           		<td><a th:href="@{/edit/{id}(id=${juego.getId_juego()})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${juego.getId_juego()})}">Delete</a></td>
+        	</tr>
+    	</tbody>
+		</table>
+		</div>
+	</div>
+</body>
+</html>
