@@ -28,7 +28,12 @@ public class JuegoService {
 	@Autowired
 	private JuegoRepository repository;
 
-	public Juego save(Juego juego) {
+	public Juego save(Juego juego,MultipartFile file) {
+		String ruta =uploadFile(file);
+		juego.setImagen_juego(ruta);
+		return repository.save(juego);
+	}
+	public Juego edit(Juego juego) {
 		return repository.save(juego);
 	}
 	
@@ -52,18 +57,20 @@ public class JuegoService {
 	
 	
 
-    public void uploadFile(MultipartFile file) {
+    public String uploadFile(MultipartFile file) {
 
+    	String ruta;
         try {
             Path copyLocation = Paths
                 .get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
             Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-            String ruta = copyLocation.toString();
+            ruta = copyLocation.getFileName().toString();
             System.out.print(ruta);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Excepcion("Could not store file " + file.getOriginalFilename()
                 + ". Please try again!");
         }
+        return ruta;
     }
 }

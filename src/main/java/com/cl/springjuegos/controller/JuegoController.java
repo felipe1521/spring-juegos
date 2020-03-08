@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cl.springjuegos.model.Juego;
 import com.cl.springjuegos.service.DesarrolladorService;
@@ -50,12 +52,16 @@ public class JuegoController {
 		Juego juego = service.getById(id);
 		model.addAttribute("juego", juego);
 		model.addAttribute("devs", Dservice.getAll());
-		return "save";
+		return "edit";
 	}
 	 
 	@PostMapping("/save")
-	public String saving(@Valid Juego juego, Model model) {
-		service.save(juego);
+	public String saving(@RequestParam("imagen") MultipartFile file,@Valid Juego juego, Model model) {
+		if(file != null) {
+			service.save(juego,file);
+		}else {
+			service.edit(juego);
+		}
 		return "redirect:/list";
 	}
 	

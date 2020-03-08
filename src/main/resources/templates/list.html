@@ -15,6 +15,7 @@
             	<th> Precio </th>
             	<th> Fecha </th>
             	<th> Desarrollador </th>
+            	<th>Imagen</th>
         	</tr>
     	</thead>
     	<tbody>
@@ -23,6 +24,7 @@
            		<td th:text="${juego.getPrecio_juego()}"></td>
            		<td th:text="${juego.getFecha_juego()}"></td>
            		<td th:text="${juego.getDesarrollador().getNombre_desarrollador()}"></td>
+           		<td><img th:src="@{${juego.getImagen_juego()}}" width="70" height="70"></td>
            		<td><a th:href="@{/edit/{id}(id=${juego.getId_juego()})}">Edit</a></td>
                 <td><a th:href="@{/delete/{id}(id=${juego.getId_juego()})}">Delete</a></td>
         	</tr>

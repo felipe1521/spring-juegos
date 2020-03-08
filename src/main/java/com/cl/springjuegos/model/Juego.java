@@ -57,7 +57,7 @@ public class Juego {
 		return imagen_juego;
 	}
 	public void setImagen_juego(String imagen_juego) {
-		this.imagen_juego = imagen_juego;
+		this.imagen_juego = "/imagenes/"+imagen_juego;
 	}
 	public int getPrecio_juego() {
 		return precio_juego;

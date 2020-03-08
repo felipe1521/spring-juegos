@@ -2,7 +2,7 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Agregar</title>
+<title>Editar</title>
 </head>
 <body>
 	<form th:action="@{/save}" th:object="${juego}" method="post" enctype="multipart/form-data">
@@ -22,18 +22,13 @@
 		</div>
 		
 		<div>
-			<label>Imagen</label> 
-			<input type="file" class="form-control" name="imagen" >
-		</div>
-		
-		<div>
 			<label>desarrollador</label>
 			<select th:field="*{desarrollador}">
     			<option th:each="dev: ${devs}" th:value="${dev.getId_desarrollador()}" th:text="${dev.getNombre_desarrollador()}" />
   			</select>
 		</div>
 		<div>
-			<input type="submit" class="btn btn-primary" value="Agregar">
+			<input type="submit" class="btn btn-primary" value="Editar">
 		</div>
 
 
