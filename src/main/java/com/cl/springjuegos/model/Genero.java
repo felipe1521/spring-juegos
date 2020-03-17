@@ -2,12 +2,9 @@ package com.cl.springjuegos.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Genero {
@@ -17,7 +14,19 @@ public class Genero {
 	private int id_genero;
 	@Column
 	private String nombre_genero;
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_juego")
-    private Juego juego;
+	
+	public int getId_genero() {
+		return id_genero;
+	}
+	public void setId_genero(int id_genero) {
+		this.id_genero = id_genero;
+	}
+	public String getNombre_genero() {
+		return nombre_genero;
+	}
+	public void setNombre_genero(String nombre_genero) {
+		this.nombre_genero = nombre_genero;
+	}
+	
+	
 }

@@ -28,12 +28,12 @@ public class JuegoService {
 	@Autowired
 	private JuegoRepository repository;
 
-	public Juego save(Juego juego,MultipartFile file) {
-		String ruta =uploadFile(file);
-		juego.setImagen_juego(ruta);
+	public Juego save(Juego juego) {
 		return repository.save(juego);
 	}
-	public Juego edit(Juego juego) {
+	public Juego file(Juego juego,MultipartFile file) {
+		String ruta =uploadFile(file);
+		juego.setImagen_juego(ruta);
 		return repository.save(juego);
 	}
 	

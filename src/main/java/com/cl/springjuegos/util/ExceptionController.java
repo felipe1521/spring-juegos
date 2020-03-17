@@ -1,11 +1,9 @@
-package com.cl.springjuegos.controller;
+package com.cl.springjuegos.util;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.cl.springjuegos.util.Excepcion;
 
 @ControllerAdvice
 public class ExceptionController {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Editar</title>
+</head>
+<body>
+	<div th:insert="~{fragments/nav}"></div>
+	<div class="container mt-4 bg-dark text-white">
+	<form th:action="@{/save}" th:object="${juego}" method="post">
+	
+		<input type="hidden" th:field="*{id_juego}"/>
+		<div class="form-group ">
+			<label>Name</label> 
+			<input type="text" th:field="*{nombre_juego}" class="form-control bg-dark text-white" name="nombre">
+		</div>
+		<div class="form-group">
+			<label>Precio</label> 
+			<input type="number" th:field="*{precio_juego}" class="form-control bg-dark text-white" name="precio">
+		</div>
+
+		<div class="form-group">
+			<label>Fecha</label> 
+			<input type="date" th:field="*{fecha_juego}" class="form-control bg-dark text-white" name="fecha">
+		</div>
+		
+		<div class="form-group">
+			<label>desarrollador</label>
+			<select th:field="*{desarrollador}" class="form-control bg-dark text-white">
+    			<option th:each="dev: ${devs}" th:value="${dev.getId_desarrollador()}" th:text="${dev.getNombre_desarrollador()}" />
+  			</select>
+		</div>
+		<div class="form-group">
+			<label>Genero</label>
+			<select th:field="*{genero}" class="form-control bg-dark text-white">
+    			<option th:each="genero: ${gens}" th:value="${genero.getId_genero()}" th:text="${genero.getNombre_genero()}" />
+  			</select>
+		</div> 
+		<div class="form-group">
+			<label>Plataforma</label>
+			<select th:field="*{plataforma}" class="form-control bg-dark text-white">
+    			<option th:each="pla: ${plats}" th:value="${pla.getId_plataforma()}" th:text="${pla.getNombre_plataforma()}" />
+  			</select>
+		</div>
+		<input type="submit" class="btn btn-success" value="Guardar">
+	</form>
+	</div>
+</body>
+</html>

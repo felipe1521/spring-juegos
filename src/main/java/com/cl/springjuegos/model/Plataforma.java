@@ -2,12 +2,9 @@ package com.cl.springjuegos.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Plataforma {
@@ -17,7 +14,19 @@ public class Plataforma {
 	private int id_plataforma;
 	@Column
 	private String nombre_plataforma;
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_juego")
-    private Juego juego;
+	
+	public int getId_plataforma() {
+		return id_plataforma;
+	}
+	public void setId_plataforma(int id_plataforma) {
+		this.id_plataforma = id_plataforma;
+	}
+	public String getNombre_plataforma() {
+		return nombre_plataforma;
+	}
+	public void setNombre_plataforma(String nombre_plataforma) {
+		this.nombre_plataforma = nombre_plataforma;
+	}
+	
+	
 }

@@ -2,20 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>Lista</title>
 </head>
 <body>
-	<div th:switch="${lista}" >
+	<div th:insert="~{fragments/nav}"></div>
+	<div th:switch="${lista}" class="container mt-4 bg-dark">
 	 <h2 th:case="null">No Games</h2>
-     	<div th:case="*">
-		<table>
+     	<div th:case="*" >
+		<table class="table text-white">
     	<thead>
         	<tr>
             	<th> Nombre </th>
             	<th> Precio </th>
             	<th> Fecha </th>
             	<th> Desarrollador </th>
-            	<th>Imagen</th>
+            	<th> Imagen</th>
+            	<th> Acciones</th>
         	</tr>
     	</thead>
     	<tbody>
@@ -25,8 +28,11 @@
            		<td th:text="${juego.getFecha_juego()}"></td>
            		<td th:text="${juego.getDesarrollador().getNombre_desarrollador()}"></td>
            		<td><img th:src="@{${juego.getImagen_juego()}}" width="70" height="70"></td>
-           		<td><a th:href="@{/edit/{id}(id=${juego.getId_juego()})}">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${juego.getId_juego()})}">Delete</a></td>
+           		<td>
+           		<a class="btn btn-info" th:href="@{/edit/{id}(id=${juego.getId_juego()})}">Actualizar</a>
+           		<a class="btn btn-warning" th:href="@{/image/{id}(id=${juego.getId_juego()})}">Cargar Imagen</a>
+                <a class="btn btn-danger" th:href="@{/delete/{id}(id=${juego.getId_juego()})}">Eliminar</a>
+                </td>
         	</tr>
     	</tbody>
 		</table>

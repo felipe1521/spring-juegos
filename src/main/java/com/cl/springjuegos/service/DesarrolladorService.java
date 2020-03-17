@@ -17,7 +17,7 @@ public class DesarrolladorService {
 	
 	public List<Desarrollador> getAll(){
 		List<Desarrollador> lista = new ArrayList<>();
-		repository.findAll().forEach(var -> lista.add(var));
+		lista = (List<Desarrollador>) repository.findAll();
 		return lista;
 	}
 }

@@ -1,15 +1,11 @@
 package com.cl.springjuegos.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -29,12 +25,26 @@ public class Juego {
 	@OneToOne
 	@JoinColumn(name = "fk_desarrollador", referencedColumnName = "id_desarrollador")
 	private Desarrollador desarrollador;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "juego")
-    private List<Genero> genero;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "juego")
-	private List<Plataforma> plataforma;
+	@OneToOne
+	@JoinColumn(name = "fk_plataforma", referencedColumnName = "id_plataforma")
+	private Plataforma plataforma;
+	@OneToOne
+	@JoinColumn(name = "fk_genero", referencedColumnName = "id_genero")
+	private Genero genero;
 	
 	
+	public Plataforma getPlataforma() {
+		return plataforma;
+	}
+	public void setPlataforma(Plataforma plataforma) {
+		this.plataforma = plataforma;
+	}
+	public Genero getGenero() {
+		return genero;
+	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
 	public int getId_juego() {
 		return id_juego;
 	}
@@ -71,18 +81,4 @@ public class Juego {
 	public void setDesarrollador(Desarrollador desarrollador) {
 		this.desarrollador = desarrollador;
 	}
-	public List<Genero> getGenero() {
-		return genero;
-	}
-	public void setGenero(List<Genero> genero) {
-		this.genero = genero;
-	}
-	public List<Plataforma> getPlataforma() {
-		return plataforma;
-	}
-	public void setPlataforma(List<Plataforma> plataforma) {
-		this.plataforma = plataforma;
-	}
-	
-	
 }
